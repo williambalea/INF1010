@@ -11,30 +11,51 @@
 using namespace std;
 
 /*Ce programme permet de déterminer la recurrence d'un mot */
-int main(int argc, char** argv) {
+void readFile(string NomFichier){
+	ifstream file;
+	file.open(NomFichier);
+	string word;
+	char x;
+	word.clear();
 
-  //utilisation normale
-  HashMap hmap;
-  hmap.put("v1",1);
-  hmap.put("v3",1);
-  hmap.put("v11",1);
-  hmap.put("v13",13);
-  
-  int value;
-  bool res = hmap.get("v13", value);
-  if (res)
-    cout << value << endl;
-  
-  hmap.remove("v1");
-  res = hmap.get("v1", value);
-  if (res)
-    cout << "ERROR: " << value << endl;
+	while (file >> word){
+		x = file.get();
 
-  std::vector<std::string> keys=hmap.getKeys();
-  for(int i=0;i<keys.size();i++){
-    cout << keys[i] << endl;
-  }
-  
-  return 0;
+		while (x != ' '){
+			word = word + x;
+			x = file.get();
+		}
+
+		cout << word << endl;
+		word.clear();
+	}
+}
+
+int main(int argc, char** argv, string nomFichier) {
+	readFile(nomFichier);
+
+	//utilisation normale
+	HashMap hmap;
+	hmap.put("v1", 1);
+	hmap.put("v3", 1);
+	hmap.put("v11", 1);
+	hmap.put("v13", 13);
+
+	int value;
+	bool res = hmap.get("v13", value);
+	if (res)
+		cout << value << endl;
+
+	hmap.remove("v1");
+	res = hmap.get("v1", value);
+	if (res)
+		cout << "ERROR: " << value << endl;
+
+	std::vector<std::string> keys = hmap.getKeys();
+	for (int i = 0; i < keys.size(); i++) {
+		cout << keys[i] << endl;
+	}
+
+	return 0;
 }
 
