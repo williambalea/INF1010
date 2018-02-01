@@ -10,7 +10,7 @@
 
 using namespace std;
 
-/* */
+/*Ce programme permet de déterminer la recurrence d'un mot */
 int main(int argc, char** argv) {
 
   //utilisation normale
