@@ -92,6 +92,15 @@ inline istream & operator >> (istream & is, TypeProduit & typeProduit) {
 	return is;
 }
 
+//void Produit::print(ostream& os) const
+//{
+//	os << " Produit :"
+//		<< " nom: " << this->obtenirNom() << endl
+//		<< " \t \t ref : " << this->obtenirReference() << endl
+//		<< " \t \t prix actuel : " << this->obtenirPrix() << endl
+//		<< "\t Fournisseur " << this->obtenirFournisseur().obtenirNom() << endl;
+//}
+
 istream & operator>>(istream & is, Produit & produit)
 {
 	return is >> produit.nom_ >> produit.reference_ >> produit.prix_ >> produit.type_;
@@ -99,12 +108,12 @@ istream & operator>>(istream & is, Produit & produit)
 
  ostream & operator<<(ostream & os, const Produit & produit)
 {
-	 os << "Produit :"
+	 os  << " Produit :"
 		 << " nom: " << produit.obtenirNom() << endl
 		 << " \t \t ref : " << produit.obtenirReference() << endl
 		 << " \t \t prix actuel : " << produit.obtenirPrix() << endl
 		 << "\t Fournisseur " << produit.obtenirFournisseur().obtenirNom() << endl;
 	 return os;
 }
-
+ 
 

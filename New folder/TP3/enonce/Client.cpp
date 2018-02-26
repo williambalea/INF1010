@@ -108,6 +108,14 @@ Client & Client::operator=(const Client & client)
 
 ostream & operator<<(ostream & os, const Client & client)
 {
-	os << client.obtenirNom() << client.monPanier_;
+	os << "Client : Usager :" << '\t' << "nom : " << client.obtenirNom() << endl
+		<< '\t' << "prenom : " << client.obtenirPrenom() << endl
+		<< '\t' << "codePostal : " << client.obtenirCodePostal() << endl;
+
+	if (client.monPanier_ == nullptr)
+		os << "Le panier de " << client.obtenirPrenom() << " est vide !" << endl;
+	else{
+		os << "Le panier de " << client.obtenirPrenom() << " :" << endl << *(client.monPanier_) << endl;
+	}
 	return os;
 }

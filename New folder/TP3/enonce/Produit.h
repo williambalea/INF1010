@@ -39,6 +39,7 @@ public:
 	bool operator > (const Produit& produit) const;
 	bool operator <(const Produit& produit) const;
 	bool operator ==(const Produit& produit) const;
+	//virtual void print(ostream& os) const;
 	
 	friend istream& operator>>(istream& is, Produit& produit);
     friend ostream& operator<<(ostream& os, const Produit& produit);
