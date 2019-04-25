@@ -21,6 +21,7 @@ public:
 		             double prix = 0.0, TypeProduit type = TypeProduitOrdinaire,bool estTaxable = true);
 	bool obtenirEstTaxable() const;
 	void modifierEstTaxable(bool estTaxable);
+	//virtual void print(ostream& os) const;
 	friend ostream& operator<<(ostream& os, const ProduitOrdinaire& produit);
 	friend istream& operator>>(istream& is, ProduitOrdinaire& produit);
 

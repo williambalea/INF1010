@@ -1,0 +1,9 @@
+﻿  Rayon.cpp
+  Produit.cpp
+  Panier.cpp
+  main.cpp
+c:\users\william\desktop\github\testrepo1\tp1\files\main.cpp(36): warning C4018: '<': signed/unsigned mismatch
+  Client.cpp
+  Generating Code...
+  Project1.vcxproj -> C:\Users\William\Desktop\GitHub\TestRepo1\TP1\Project1\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\William\Desktop\GitHub\TestRepo1\TP1\Project1\Debug\Project1.pdb (Partial PDB)

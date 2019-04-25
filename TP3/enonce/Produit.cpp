@@ -5,21 +5,26 @@
 *******************************************/
 
 #include "Produit.h"
+using namespace std;
 
-Produit::Produit(Fournisseur& fournisseur,const string& nom, int reference, double prix,TypeProduit type) 
+Produit::Produit(Fournisseur& fournisseur,const string& nom, int reference, double prix,TypeProduit type) : fournisseur_(fournisseur), nom_(nom), reference_(reference), prix_(prix), type_(type)
 {
-	fournisseur_ = fournisseur;
-	nom_ = nom;
-	reference_ = reference;
-	prix_ = prix;
-	type_ = type;
+	fournisseur.obtenirCatalogue().push_back(this);
 }
 
+void eraseProduit(vector<Produit*>& catalogue, int pos)
+{
+	unsigned int max = catalogue.size() - 1;
+	for (unsigned int i = pos; i < max; i++)
+		catalogue[i] = catalogue[i + 1];
+	catalogue.pop_back();
+}
 
 Produit::~Produit() {
-	vector<Produit*> contenuCatalogue_;
-	for (unsigned int i = 0; i < contenuCatalogue_.size(); i++);			//a revenir 
-	contenuCatalogue_.pop_back();
+	for (unsigned int i = 0; i < fournisseur_.obtenirCatalogue().size(); i++) {
+		if (*(fournisseur_.obtenirCatalogue()[i]) == *this)
+			eraseProduit(fournisseur_.obtenirCatalogue(), i);
+	}
 }
 
 // Methodes d'acces
@@ -87,6 +92,15 @@ inline istream & operator >> (istream & is, TypeProduit & typeProduit) {
 	return is;
 }
 
+//void Produit::print(ostream& os) const
+//{
+//	os << " Produit :"
+//		<< " nom: " << this->obtenirNom() << endl
+//		<< " \t \t ref : " << this->obtenirReference() << endl
+//		<< " \t \t prix actuel : " << this->obtenirPrix() << endl
+//		<< "\t Fournisseur " << this->obtenirFournisseur().obtenirNom() << endl;
+//}
+
 istream & operator>>(istream & is, Produit & produit)
 {
 	return is >> produit.nom_ >> produit.reference_ >> produit.prix_ >> produit.type_;
@@ -94,12 +108,12 @@ istream & operator>>(istream & is, Produit & produit)
 
  ostream & operator<<(ostream & os, const Produit & produit)
 {
-	 os << "Produit :"
+	 os  << " Produit :"
 		 << " nom: " << produit.obtenirNom() << endl
 		 << " \t \t ref : " << produit.obtenirReference() << endl
 		 << " \t \t prix actuel : " << produit.obtenirPrix() << endl
 		 << "\t Fournisseur " << produit.obtenirFournisseur().obtenirNom() << endl;
 	 return os;
 }
-
+ 
 

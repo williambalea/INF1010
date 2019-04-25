@@ -8,6 +8,7 @@
 #define USAGER_H
 
 #include <string>
+#include <iostream>
 using namespace std;
 class Usager
 {
@@ -27,9 +28,9 @@ public:
 	void modifierCodePostal(const string & codePostal);
 
 	Usager & operator=(const Usager& usager);
-	bool operator==(int indentifiant) const;
+	bool operator==(int identifiant) const;
 	bool operator == (const Usager & usager);
-	friend bool operator==(int indentifiant, const Usager& usager);
+	friend bool operator==(int identifiant, const Usager& usager);
 	friend ostream& operator<<(ostream& os, const Usager& u);
 
 private:

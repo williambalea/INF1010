@@ -12,6 +12,7 @@
 #include <typeinfo>
 #include "Usager.h"
 #include "Fournisseur.h"
+
 class Fournisseur;
 
 enum TypeProduit { TypeProduitOrdinaire = 0, TypeProduitAuxEncheres = 1 };
@@ -21,6 +22,7 @@ class Produit {
 public:
 	Produit(Fournisseur& fournisseur, const string& nom = "outil", int reference = 0,
 		    double prix = 0.0, TypeProduit type = TypeProduitOrdinaire);
+	
 	~Produit();
 	
 	string obtenirNom() const;
@@ -32,10 +34,12 @@ public:
 	void modifierNom(const string& nom);
 	void modifierReference(int reference);
 	void modifierPrix(double prix);
+	
 		
 	bool operator > (const Produit& produit) const;
 	bool operator <(const Produit& produit) const;
 	bool operator ==(const Produit& produit) const;
+	//virtual void print(ostream& os) const;
 	
 	friend istream& operator>>(istream& is, Produit& produit);
     friend ostream& operator<<(ostream& os, const Produit& produit);

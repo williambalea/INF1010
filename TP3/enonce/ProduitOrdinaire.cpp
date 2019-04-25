@@ -13,9 +13,8 @@ using namespace std;
 
 ProduitOrdinaire::ProduitOrdinaire (Fournisseur& fournisseur,
 	const string& nom, int reference,
-	double prix, TypeProduit type, bool estTaxable) : Produit (fournisseur, nom, reference, prix, type)
+	double prix, TypeProduit type, bool estTaxable) : Produit(fournisseur, nom, reference, prix, type), estTaxable_(estTaxable)
 {
-	estTaxable_ = estTaxable;
 }
 
 bool ProduitOrdinaire::obtenirEstTaxable() const
@@ -28,6 +27,12 @@ void ProduitOrdinaire::modifierEstTaxable(bool estTaxable)
 	estTaxable_ = estTaxable;
 }
 
+//void ProduitOrdinaire::print(ostream& os) const
+//{
+//	cout << "PRALADADKFFGS!!!!";
+//	Produit::print(os);
+//}
+
 istream& operator>>(istream& is, ProduitOrdinaire& produit)
 {
 	is >> static_cast<Produit &> (produit);
@@ -38,7 +43,8 @@ istream& operator>>(istream& is, ProduitOrdinaire& produit)
 
 ostream& operator<<(ostream& os, const ProduitOrdinaire& produit)
 {
+	os << "ProduitOrdinaire ";
 	os << static_cast<Produit> (produit);
-	os << "est Taxable : " << produit.estTaxable_ << endl;
+	os << "est Taxable : " << boolalpha << produit.estTaxable_ << endl;
 	return os;
 }

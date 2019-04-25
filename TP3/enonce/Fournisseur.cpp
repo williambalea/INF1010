@@ -45,6 +45,12 @@ Fournisseur& Fournisseur::operator=(const Fournisseur& fournisseur)
 
 ostream& operator<<(ostream & os, Fournisseur& fournisseur)
 {
-	os << &fournisseur.satisfaction_ << endl;
+	os << "Fournisseur : Usager : nom : " << fournisseur.obtenirNom() << endl
+		<< '\t' << "prenom : " << fournisseur.obtenirPrenom() << endl
+		<< '\t' << "codePostal : " << fournisseur.obtenirCodePostal() << endl
+		<< '\t' << " notes ";
+	for (int i = 0; i < NIVEAUX_SATISFACTION; i++) {
+		os << '\t' << i << ": " << fournisseur.obtenirSatisfaction().niveaux_[i] << endl;
+	}
 	return os;
 }

@@ -25,6 +25,7 @@ const int  NB_PRODUCTS = 15;
 
 int main()
 {
+	
 	// Creez un objet de classe client à l'aide du constructeur
 	Client martine("Bellaiche", "Martine", 1111, "H2T3A6", 199004);
 
@@ -36,9 +37,9 @@ int main()
 	// vérifier si les copies sont identiques;
 
 	if (maCopie == martine)
-		cout << "clients identitiques" << endl;
+		cout << "clients identiques" << endl;
 	else
-		cout << " non Identiques " << endl;
+		cout << "non Identiques" << endl;
 
 	Client unAutreClient("Client", "autre", 2222, "h3T3A7", 20180212);
 	unAutreClient = maCopie;
@@ -60,6 +61,8 @@ int main()
 	ProduitAuxEncheres* prodAuxEncheres = new ProduitAuxEncheres(poly, "pAuxEncheres", 20,
 		100, TypeProduitAuxEncheres);
 
+	
+
 	// Le client achete les 7 premiers porduits
 	for (int i = 0; i < 7; i++)
 		martine.acheter(produits[i]);
@@ -67,37 +70,37 @@ int main()
 	// Afficher Panier du client
 	cout << martine;
 
-	// afficher le fournisseur
-	cout << poly;
+	//// afficher le fournisseur
+	//cout << poly;
 
-	// Client mise sur le produit aux encheres 
-	martine.miserProduit(prodAuxEncheres, 500);
+	//// Client mise sur le produit aux encheres 
+	//martine.miserProduit(prodAuxEncheres, 500);
 
-	// afficher le produit aux enchères
-	cout << *prodAuxEncheres << endl;
+	//// afficher le produit aux enchères
+	//cout << *prodAuxEncheres << endl;
 
-	// Ma copie mise aussi  sur le produit  aux enchères
-	maCopie.miserProduit(prodAuxEncheres, 555);
+	//// Ma copie mise aussi  sur le produit  aux enchères
+	//maCopie.miserProduit(prodAuxEncheres, 555);
 
-	// afficher le produit aux enchères
-	cout << *prodAuxEncheres << endl;
+	//// afficher le produit aux enchères
+	//cout << *prodAuxEncheres << endl;
 
-	// Afficher Panier du client
-	cout << martine << endl;
+	//// Afficher Panier du client
+	//cout << martine << endl;
 
-	// trouver le produit le plus cher du panier
-	cout << " Produit le plus cher "<< *martine.obtenirPanier()->trouverProduitPlusCher();
-	
-	// livrer le panier du client martine
-	martine.livrerPanier();
+	//// trouver le produit le plus cher du panier
+	//cout << " Produit le plus cher "<< *martine.obtenirPanier()->trouverProduitPlusCher();
+	//
+	//// livrer le panier du client martine
+	//martine.livrerPanier();
 
-	// Afficher lefournisseur
-	cout << poly << endl;
-	
-	// Nettoyer la memoire 
-	for (int i = 0; i < NB_PRODUCTS;i++) {
-		delete produits[i];
-	}
-	delete prodAuxEncheres;
-	
+	//// Afficher lefournisseur
+	//cout << poly << endl;
+	//
+	//// Nettoyer la memoire 
+	//for (int i = 0; i < NB_PRODUCTS;i++) {
+	//	delete produits[i];
+	//}
+	//delete prodAuxEncheres;
+	//
 }

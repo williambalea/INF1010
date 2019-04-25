@@ -73,15 +73,15 @@ Usager &Usager::operator=(const Usager & usager)
 	return *this;
 }
 
-bool Usager::operator==(int indentifiant) const {
-	return identifiant_ == identifiant_;
+bool Usager::operator==(int identifiant) const {
+	return identifiant_ == identifiant;
 };
 bool Usager::operator == (const Usager & usager)
 {
 	return  *this == usager.obtenirIdentifiant();
 }
-bool operator==(int indentifiant, const Usager& usager) {
-	return usager == indentifiant;
+bool operator==(int identifiant, const Usager& usager) {
+	return usager == identifiant;
 }
 
 ostream & operator<<(ostream & os, const Usager & usager)

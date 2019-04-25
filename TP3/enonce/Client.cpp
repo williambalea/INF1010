@@ -7,7 +7,9 @@
 #include "Client.h"
 #include "Fournisseur.h"
 
-
+Client::Client(const string&  nom, const string& prenom, int identifiant, const string& codePostal, long date) : Usager(nom, prenom, identifiant, codePostal), dateNaissance_(date)
+{
+}
 
 Client::~Client()
 {
@@ -85,8 +87,10 @@ void Client::miserProduit(ProduitAuxEncheres* produitAuxEncheres, double montant
 Client & Client::operator=(const Client & client)
 {
 	if (this != &client) {
-		Usager temp(*this);
-		temp = static_cast<Usager> (client);
+		this->modifierNom(client.obtenirNom());
+		this->modifierPrenom(client.obtenirPrenom());
+		this->modifierIdentifiant(client.obtenirIdentifiant());
+		this->modifierCodePostal(client.obtenirCodePostal());
 		dateNaissance_ = client.obtenirDateNaissance();
 		if (client.monPanier_ != nullptr) {
 			delete monPanier_;
@@ -104,6 +108,14 @@ Client & Client::operator=(const Client & client)
 
 ostream & operator<<(ostream & os, const Client & client)
 {
-	os << client << client.monPanier_;
+	os << "Client : Usager :" << '\t' << "nom : " << client.obtenirNom() << endl
+		<< '\t' << "prenom : " << client.obtenirPrenom() << endl
+		<< '\t' << "codePostal : " << client.obtenirCodePostal() << endl;
+
+	if (client.monPanier_ == nullptr)
+		os << "Le panier de " << client.obtenirPrenom() << " est vide !" << endl;
+	else{
+		os << "Le panier de " << client.obtenirPrenom() << " :" << endl << *(client.monPanier_) << endl;
+	}
 	return os;
 }
